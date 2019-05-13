@@ -26,6 +26,8 @@ function onloadHandler()
 {
    // get the canvas DOM element and the 2D drawing context
    var canvas = document.getElementById('canvas');
+   canvas.width = window.innerWidth;
+   canvas.height = window.innerHeight;
    
    // create the scene and setup camera, perspective and viewport
    var scene = new Phoria.Scene();
@@ -91,7 +93,6 @@ function onloadHandler()
    </head>
    
    <body style="background-color: #bfbfbf">
-      <canvas id="canvas" width="768" height="512" style="background-color: #eee"></canvas>
-      <div><a style="color:#225588;text-decoration:none;" href="./index.html">&lt;&lt; Phoria demos</a></div>
+      <canvas id="canvas" width= window.innerWidth height= window.innerHeight style="background-color: #eee"></canvas>
    </body>
 </html>
