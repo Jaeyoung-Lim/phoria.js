@@ -26,7 +26,8 @@ function onloadHandler()
 {
    // get the canvas DOM element and the 2D drawing context
    var canvas = document.getElementById('canvas');
-   
+   canvas.width = window.innerWidth;
+   canvas.height = window.innerHeight;
    // create the scene and setup camera, perspective and viewport
    var scene = new Phoria.Scene();
    scene.camera.position = {x:0.0, y:5.0, z:-15.0};
@@ -156,34 +157,7 @@ function onloadHandler()
             break;
       }
    }, false);
-   
-   // add GUI controls
-   var gui = new dat.GUI();
-   var f = gui.addFolder('Perspective');
-   f.add(scene.perspective, "fov").min(5).max(175);
-   f.add(scene.perspective, "near").min(1).max(100);
-   f.add(scene.perspective, "far").min(1).max(1000);
-   //f.open();
-   f = gui.addFolder('Camera LookAt');
-   f.add(scene.camera.lookat, "x").min(-100).max(100);
-   f.add(scene.camera.lookat, "y").min(-100).max(100);
-   f.add(scene.camera.lookat, "z").min(-100).max(100);
-   f.open();
-   f = gui.addFolder('Camera Position');
-   f.add(scene.camera.position, "x").min(-100).max(100);
-   f.add(scene.camera.position, "y").min(-100).max(100);
-   f.add(scene.camera.position, "z").min(-100).max(100);
-   f.open();
-   f = gui.addFolder('Camera Up');
-   f.add(scene.camera.up, "x").min(-10).max(10).step(0.1);
-   f.add(scene.camera.up, "y").min(-10).max(10).step(0.1);
-   f.add(scene.camera.up, "z").min(-10).max(10).step(0.1);
-   f = gui.addFolder('Rendering');
-   f.add(testCube.style, "drawmode", ["point", "wireframe", "solid"]);
-   f.add(testCube.style, "shademode", ["plain", "lightsource"]);
-   f.add(testCube.style, "fillmode", ["fill", "filltwice", "inflate", "fillstroke", "hiddenline"]);
-   f.open();
-   
+  
    // start animation
    requestAnimFrame(fnAnimate);
 }
